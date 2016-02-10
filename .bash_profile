@@ -16,14 +16,14 @@
 #
 # See also: http://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
 
-if [[ -f ~/.profile ]]; then
-  . ~/.profile
+if [[ -f "${HOME}/.profile" ]]; then
+  . "${HOME}/.profile"
 fi
 
-# .bashrc gets the aliases and functions from .bash_aliases
 # Note to self: . is the same as source
-if [[ -f ~/.bashrc ]]; then
-	. ~/.bashrc
+# .bashrc automatically loads the aliases and functions from .bash_aliases
+if [[ -f "${HOME}/.bashrc" ]]; then
+	. "${HOME}/.bashrc"
 fi
 
 

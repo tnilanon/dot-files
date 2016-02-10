@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
-find ${PWD} -iname ".*" -type f -maxdepth 1 | xargs -I % ln -s % ~
+temp="${HOME}/.bashrc"
+if [[ -f ${temp} && ! -L ${temp} ]]; then
+	mv ${temp} "${HOME}/.bashrc.local"
+fi
+temp="${HOME}/.profile"
+if [[ -f ${temp} && ! -L ${temp} ]]; then
+	mv ${temp} "${HOME}/.profile.local"
+fi
+unset temp
+
+find ${PWD} -maxdepth 1 -iname ".*" -type f | xargs -I % ln -s % ${HOME}
 
 

@@ -1,5 +1,10 @@
 # .bashrc
 
+# Loads local .bashrc file
+if [[ -f "${HOME}/.bashrc.local" ]]; then
+	. "${HOME}/.bashrc.local"
+fi
+
 # Check for interactive mode to avoid breaking things like sftp on Debian
 # (where bash is compiled with the option to load ~/.bashrc
 # even for non-interactive shells)
