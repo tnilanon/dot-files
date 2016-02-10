@@ -28,6 +28,8 @@ alias connect-melady2.usc.edu='ssh gor@melady2.usc.edu'
 alias connect-newyork.usc.edu='ssh gor@newyork.usc.edu'
 alias connect-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
 
+alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
+
 function remove-patient-name-from-directory {
 	find . -type d -depth 1 | sed 's/\.\/Patient_[0-9]*$//' | sed 's/\.\/\(\(Patient_[0-9]*\).*\)/mv "\1" "\2"/g' | sh
 }
