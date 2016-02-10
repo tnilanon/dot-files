@@ -1,8 +1,8 @@
 # Load platform-specific environment
 
 case ${OSTYPE} in
-	darwin*)	. .profile.darwin ;;
-	linux*)		. .profile.linux ;;
+	darwin*)	. ~/.profile.darwin ;;
+	linux*)		. ~/.profile.linux ;;
 	msys*)		echo "No .profile for MinGW" ;;
 	cygwin*)	echo "No .profile for Cygwin" ;;
 	bsd*)			echo "No .profile for BSD" ;;
