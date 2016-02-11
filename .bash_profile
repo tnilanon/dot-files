@@ -17,7 +17,7 @@
 # See also: http://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/
 
 if [[ -f "${HOME}/.profile" ]]; then
-  . "${HOME}/.profile"
+	. "${HOME}/.profile"
 fi
 
 # Note to self: . is the same as source
