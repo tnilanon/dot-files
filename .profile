@@ -1,3 +1,4 @@
+# .profile
 # Load platform-specific environment
 
 if [[ -f "${HOME}/.profile.local" ]]; then
@@ -5,9 +6,9 @@ if [[ -f "${HOME}/.profile.local" ]]; then
 fi
 
 case ${OSTYPE} in
-	darwin*)	. ~/.profile.darwin ;;
-	linux*)		. ~/.profile.linux ;;
-	msys*)		echo "No specific .profile for MinGW" ;;
+	darwin*)	. "${HOME}/.profile.darwin" ;;
+	linux*)		. "${HOME}/.profile.linux" ;;
+	msys*)		. "${HOME}/.profile.windows" ;;
 	cygwin*)	echo "No specific .profile for Cygwin" ;;
 	bsd*)			echo "No specific .profile for BSD" ;;
 	solaris*)	echo "No specific .profile for Solaris" ;;
