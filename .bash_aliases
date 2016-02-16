@@ -6,11 +6,6 @@
 # compgen
 # id
 
-alias lso='/bin/ls'
-alias ls='ls -FG'
-alias ll='ls -FGlT'
-alias lh='ls -FGlTh'
-
 alias distro='python -c "import platform; print platform.dist()"'
 
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'

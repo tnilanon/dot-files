@@ -1,6 +1,11 @@
 # .profile.darwin
 # Platform-specific environment
 
+alias lso='/bin/ls'
+alias ls='lso -FG'
+alias ll='ls -lT'
+alias lh='ll -h'
+
 export ARCHFLAGS="-arch x86_64"
 export CPATH="/usr/X11/include"
 #export PATH="/Applications/MATLAB_R2015a.app/bin:/usr/local/bin:/usr/local/sbin:${PATH}:/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin"
