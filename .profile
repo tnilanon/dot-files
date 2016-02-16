@@ -12,7 +12,7 @@ case ${OSTYPE} in
 	cygwin*)	echo "No specific .profile for Cygwin" ;;
 	bsd*)			echo "No specific .profile for BSD" ;;
 	solaris*)	echo "No specific .profile for Solaris" ;;
-	*)				echo "Can't find specific .profile for \$OSTYPE ${OSTYPE}" ;;
+	*)				echo "Can't recognize \${OSTYPE} ${OSTYPE} for .profile" ;;
 esac
 
 

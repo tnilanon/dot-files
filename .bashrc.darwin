@@ -1,0 +1,8 @@
+# .bashrc.darwin
+
+alias lso='/bin/ls'
+alias ls='lso -FG'
+alias ll='ls -lT'
+alias lh='ll -h'
+
+

@@ -5,6 +5,16 @@ if [[ -f "${HOME}/.bashrc.local" ]]; then
 	. "${HOME}/.bashrc.local"
 fi
 
+case ${OSTYPE} in
+	darwin*)	. "${HOME}/.bashrc.darwin" ;;
+	linux*)		. "${HOME}/.bashrc.linux" ;;
+	msys*)		. "${HOME}/.bashrc.windows" ;;
+	cygwin*)	echo "No specific .bashrc for Cygwin" ;;
+	bsd*)			echo "No specific .bashrc for BSD" ;;
+	solaris*)	echo "No specific .bashrc for Solaris" ;;
+	*)				echo "Can't recognize \${OSTYPE} ${OSTYPE} for .bashrc" ;;
+esac
+
 # Check for interactive mode to avoid breaking things like sftp on Debian
 # (where bash is compiled with the option to load ~/.bashrc
 # even for non-interactive shells)
