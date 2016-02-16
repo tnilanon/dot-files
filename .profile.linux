@@ -1,6 +1,11 @@
 # .profile.linux
 # Platform-specific environment
 
+alias lso='/bin/ls'
+alias ls='lso -F --color=auto'
+alias ll='ls -l --time-style=long-iso'
+alias lh='ll -h'
+
 # Anaconda
 eval "$(/home/gor/anaconda3/bin/register-python-argcomplete conda)"
 
