@@ -25,6 +25,35 @@ if [[ $- =~ i ]]; then
   stty -ixon
 fi
 
+# Fancy hostname for prompt
+function fancy_hostname {
+	if [[ -z ${SSH_CONNECTION+x} ]]; then
+		echo local
+	else
+		echo ${HOSTNAME}
+	fi
+}
+
+# Fancy pwd for prompt
+function fancy_pwd {
+	pwd | sed s.${HOME}.~. | awk -F"/" '
+		BEGIN { ORS = "/" }
+		END {
+			for(i = 1; i <= NF; i++) {
+				if(i == 1 && $1 == "") {
+					print ""
+				}
+				else if(i == 1 || i > NF - 2) {
+					print $i
+				}
+				else {
+					print ".."
+				}
+			}
+		}
+	' | sed s./\$..
+}
+
 # Syntactic sugar for ANSI escape sequences
 txtblk='\[\e[0;30m\]' # Black - Regular
 txtred='\[\e[0;31m\]' # Red
@@ -69,7 +98,8 @@ hiwht='\[\e[0;97m\]'  # White
 txtrst='\[\e[0m\]'    # Text Reset
 
 # Prompt variables
-PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
+#PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
+PROMPT_BEFORE="${bldred}\u ${txtpur}\$(fancy_hostname) ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\$(fancy_pwd)${txtrst}"
 PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
 
 # Prompt command
