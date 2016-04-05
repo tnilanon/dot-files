@@ -26,6 +26,7 @@ export VXL_DIR="/Library/DRP/vxl/bin"
 export VXL_SRC="/Library/DRP/vxl/src"
 
 # Homebrew
+export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 export HOMEBREW_EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # OS X Airport
