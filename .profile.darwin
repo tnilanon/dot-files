@@ -14,8 +14,8 @@ alias conda-source-activate='source /Users/gor/anaconda3/bin/activate'
 #export ANDROID_HOME="/usr/local/opt/android-sdk"
 
 # Bash completion
-if [[ -f `brew --prefix`/etc/bash_completion ]]; then
-	. `brew --prefix`/etc/bash_completion
+if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
+	. $(brew --prefix)/etc/bash_completion
 fi
 
 # Byobu
