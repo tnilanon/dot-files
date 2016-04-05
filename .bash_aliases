@@ -7,6 +7,7 @@
 # id
 
 alias distro='python -c "import platform; print platform.dist()"'
+# alias distro='lsb_release -sirc'
 
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'
 
