@@ -10,6 +10,6 @@ if [[ -f ${temp} && ! -L ${temp} ]]; then
 fi
 unset temp
 
-find ${PWD} -maxdepth 1 -iname ".*" -type f | xargs -I % ln -s % ${HOME}
+find ${PWD} -maxdepth 1 -iname ".*" -type f | xargs -I % ln -sv % ${HOME}
 
 
