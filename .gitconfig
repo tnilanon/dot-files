@@ -1,0 +1,20 @@
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore_global
+[user]
+	name = Tanachat Nilanon
+	email = tnilanon@users.noreply.github.com
+[push]
+	default = simple
+[alias]
+	alias = !git config --list | grep alias | cut -c 7- | sed \"s/^\\([^=]*\\)=/$(tput setaf 3)$(tput bold)\\1 $(tput setaf 1)=$(tput sgr0) /\"
+	ls = log --decorate --graph --oneline
+	ll = log --decorate --graph --numstat --pretty=tformat:"%C(yellow)%h\\ %C(green)%cd\\ %Creset%s\\ %C(blue)[%cn]%C(red)%d" --date=short
+	ll-commit = "!gf() { git ll "$1"^.."$1"; }; gf"
+	diff-commit = "!gf() { git diff "$1"^.."$1"; }; gf"
+	st = status --short --branch
+	up = pull --all --prune --ff-only
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
