@@ -43,11 +43,11 @@ fi
 # to paste the proper path after ssh-add
 if ! agent_is_running; then
     agent_start
+    ssh-add ~/.ssh/id_ed25519
     ssh-add ~/.ssh/github_rsa
-    ssh-add ~/.ssh/id_dsa
 elif ! agent_has_keys; then
+    ssh-add ~/.ssh/id_ed25519
     ssh-add ~/.ssh/github_rsa
-    ssh-add ~/.ssh/id_dsa
 fi
 
 unset env
