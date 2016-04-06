@@ -99,11 +99,11 @@ txtrst='\[\e[0m\]'    # Text Reset
 
 # Prompt variables
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
-PROMPT_BEFORE="${bldred}\u ${txtpur}\$(fancy_hostname) ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\$(fancy_pwd)${txtrst}"
+PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\`fancy_pwd\`${txtrst}"
 PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
 
 # Prompt command
-PROMPT_COMMAND='__git_ps1 "$PROMPT_BEFORE" "$PROMPT_AFTER"'
+PROMPT_COMMAND='__git_ps1 "${PROMPT_BEFORE}" "${PROMPT_AFTER}"'
 
 # Git prompt features (read ~/.git-prompt.sh for reference)
 export GIT_PS1_SHOWDIRTYSTATE="true"
