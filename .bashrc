@@ -99,7 +99,8 @@ txtrst='\[\e[0m\]'    # Text Reset
 
 # Prompt variables
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
-PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\`fancy_pwd\`${txtrst}"
+#PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\`fancy_pwd\`${txtrst}"
+PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
 PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
 
 # Prompt command
