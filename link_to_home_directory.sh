@@ -11,5 +11,6 @@ fi
 unset temp
 
 find ${PWD} -maxdepth 1 -iname ".*" -type f | xargs -I % ln -sv % ${HOME}
+ln -sv ${PWD}/.ssh/config ${HOME}/.ssh/config
 
 
