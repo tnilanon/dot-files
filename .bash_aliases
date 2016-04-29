@@ -22,7 +22,7 @@ alias connect-lisbon.usc.edu='ssh gor@lisbon.usc.edu'
 alias connect-melady1.usc.edu='ssh gor@melady1.usc.edu'
 alias connect-melady2.usc.edu='ssh gor@melady2.usc.edu'
 alias connect-newyork.usc.edu='ssh gor@newyork.usc.edu'
-alias connect-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
+alias connect-melady-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
 
 alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
 
