@@ -10,6 +10,7 @@ alias distro='python -c "import platform; print platform.dist()"'
 # alias distro='lsb_release -sirc'
 
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'
+alias matlab-cli='matlab -nodesktop -nodisplay -nosplash'
 
 # alias connect-login.cs.unc.edu='ssh gor@login.cs.unc.edu'
 
