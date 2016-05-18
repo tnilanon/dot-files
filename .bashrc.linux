@@ -11,6 +11,6 @@ if command -v keychain >/dev/null 2>&1; then
 fi
 
 # Upgrade only Ubuntu security updates
-alias upgrade-security-updates=$'apt-get -s upgrade | grep "^Inst" | grep -i security | awk -F " " {\'print $2\'}'
+alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 
 
