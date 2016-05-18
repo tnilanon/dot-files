@@ -21,11 +21,18 @@ else
 	apt-mark showhold > ${PACKAGE_STATES_HOLD_LIST}
 
 	sudo apt-get install $(cat ${PACKAGE_LIST})
+
 	rm ${PACKAGE_LIST}
 
-	sudo apt-mark auto $(cat ${PACKAGE_STATES_AUTO_LIST})
-	sudo apt-mark manual $(cat ${PACKAGE_STATES_MANUAL_LIST})
-	sudo apt-mark hold $(cat ${PACKAGE_STATES_HOLD_LIST})
+	if [[ $(wc -l ${PACKAGE_STATES_AUTO_LIST} | cut -d ' ' -f 1) -gt 0 ]]; then
+		sudo apt-mark auto $(cat ${PACKAGE_STATES_AUTO_LIST})
+	fi
+	if [[ $(wc -l ${PACKAGE_STATES_MANUAL_LIST} | cut -d ' ' -f 1) -gt 0 ]]; then
+		sudo apt-mark manual $(cat ${PACKAGE_STATES_MANUAL_LIST})
+	fi
+	if [[ $(wc -l ${PACKAGE_STATES_HOLD_LIST} | cut -d ' ' -f 1) -gt 0 ]]; then
+		sudo apt-mark hold $(cat ${PACKAGE_STATES_HOLD_LIST})
+	fi
 
 	rm ${PACKAGE_STATES_AUTO_LIST}
 	rm ${PACKAGE_STATES_MANUAL_LIST}
