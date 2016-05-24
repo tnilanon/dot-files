@@ -10,6 +10,8 @@ autocmd FileType python set ts=4 sts=4 sw=4 sta et tw=79 fo=croql
 " tw	= textwidth
 " fo	= formatoptions
 
+"set cursorline
+
 syntax on
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
