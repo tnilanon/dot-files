@@ -14,7 +14,11 @@ unset temp
 #ln -sv ${PWD}/.ssh/config ${HOME}/.ssh/config
 
 file_list=$(find ${PWD} -maxdepth 1 -iname ".*" -type f | sort)
-file_list="${file_list} ${PWD}/.ssh/config ${PWD}/ubuntu-upgrade-security-updates.sh"
+file_list="${file_list} ${PWD}/.ssh/config"
+case ${OSTYPE} in
+	linux*)	file_list="${file_list} ${PWD}/ubuntu-upgrade-security-updates.sh" ;;
+	*)			echo 'Skipping ubuntu-upgrade-security-updates.sh as it is specific to Ubuntu' ;;
+esac
 
 for file in ${file_list}
 do
