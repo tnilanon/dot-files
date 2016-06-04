@@ -14,6 +14,9 @@ if command -v keychain >/dev/null 2>&1; then
 	eval `keychain --eval --quiet id_ed25519 id_rsa id_github_rsa`
 fi
 
+# Reload module 8812au
+alias reload-module-8812au='sudo modprobe -r 8812au; sudo modprobe 8812au'
+
 # Upgrade only Ubuntu security updates
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 
