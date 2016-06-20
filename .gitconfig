@@ -16,6 +16,6 @@
 	st = status --short --branch
 	update = pull --ff-only --all --prune
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
