@@ -1,7 +1,7 @@
 # .bashrc.darwin
 
 alias lso='/bin/ls'
-alias ls='lso -FG'
+alias ls='lso -aFG'
 alias ll='ls -lT'
 alias lh='ll -h'
 
