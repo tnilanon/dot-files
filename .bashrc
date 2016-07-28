@@ -54,6 +54,11 @@ function fancy_pwd {
 	' | sed s./\$..
 }
 
+# Fancy conda env for prompt
+function fancy_conda_env {
+	echo "${CONDA_DEFAULT_ENV:+(${CONDA_DEFAULT_ENV}) }"
+}
+
 # Syntactic sugar for ANSI escape sequences
 txtblk='\[\e[0;30m\]' # Black - Regular
 txtred='\[\e[0;31m\]' # Red
@@ -100,7 +105,8 @@ txtrst='\[\e[0m\]'    # Text Reset
 # Prompt variables
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\`fancy_pwd\`${txtrst}"
-PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
+#PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
+PROMPT_BEFORE="\`fancy_conda_env\`${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
 PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
 
 # Prompt command
