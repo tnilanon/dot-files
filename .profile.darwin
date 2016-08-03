@@ -6,9 +6,9 @@ export CPATH="/usr/X11/include"
 #export PATH="/Applications/MATLAB_R2015a.app/bin:/usr/local/bin:/usr/local/sbin:${PATH}:/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig"
 
-# Anaconda
-eval "$(/Users/gor/anaconda3/bin/register-python-argcomplete conda)"
-alias conda-source-activate='source /Users/gor/anaconda3/bin/activate'
+# Conda
+eval "$(/Users/gor/conda/bin/register-python-argcomplete conda)"
+alias conda-source-activate='source /Users/gor/conda/bin/activate'
 
 # Android
 #export ANDROID_HOME="/usr/local/opt/android-sdk"

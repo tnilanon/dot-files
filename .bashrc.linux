@@ -5,9 +5,9 @@ alias ls='lso -aF --color=auto'
 alias ll='ls -l --time-style=long-iso'
 alias lh='ll -h'
 
-# Anaconda
-eval "$(/home/gor/anaconda3/bin/register-python-argcomplete conda)"
-alias conda-source-activate='source /home/gor/anaconda3/bin/activate'
+# Conda
+eval "$(/home/gor/conda/bin/register-python-argcomplete conda)"
+alias conda-source-activate='source /home/gor/conda/bin/activate'
 
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
