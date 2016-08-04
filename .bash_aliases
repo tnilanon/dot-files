@@ -12,7 +12,7 @@ alias distro='python -c "import platform; print platform.dist()"'
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'
 alias matlab-cli='matlab -nodesktop -nodisplay -nosplash'
 
-alias docker-rm-stopped='docker ps --quiet --all | xargs docker rm'
+alias docker-rm-exited='docker ps --quiet --filter "status=exited" | xargs docker rm'
 alias docker-rmi-dangling='docker images --quiet --filter "dangling=true" | xargs docker rmi'
 
 # alias connect-login.cs.unc.edu='ssh gor@login.cs.unc.edu'
