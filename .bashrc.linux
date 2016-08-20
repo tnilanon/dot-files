@@ -6,11 +6,14 @@ alias ll='ls -l --time-style=long-iso'
 alias lh='ll -h'
 
 # apt-get purge old kernels
-alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')")'
+alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')" | tr -s " " | cut -d " " -f 2)'
 
 # Conda
-eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
-alias conda-source-activate='source /home/gor/_conda_/bin/activate'
+if [[ -f /home/gor/_conda_/bin/register-python-argcomplete ]]
+then
+	eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
+	alias conda-source-activate='source /home/gor/_conda_/bin/activate'
+fi
 
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
