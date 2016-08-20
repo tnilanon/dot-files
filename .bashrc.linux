@@ -5,6 +5,9 @@ alias ls='lso -aF --color=auto'
 alias ll='ls -l --time-style=long-iso'
 alias lh='ll -h'
 
+# apt-get purge old kernels
+alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')")'
+
 # Conda
 eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
 alias conda-source-activate='source /home/gor/_conda_/bin/activate'
