@@ -5,6 +5,9 @@ alias ls='lso -aFG'
 alias ll='ls -lT'
 alias lh='ll -h'
 
+alias vi='vim'
+export EDITOR='vi'
+
 alias openssl='/usr/local/Cellar/openssl/1.0.2h/bin/openssl'
 alias c_rehash='/usr/local/Cellar/openssl/1.0.2h/bin/c_rehash'
 

@@ -32,6 +32,9 @@ export HOMEBREW_EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/b
 # OS X Airport
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport'
 
+# Perl
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+
 # Pyenv
 export PYENV_ROOT="/usr/local/var/pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
