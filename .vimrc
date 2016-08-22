@@ -1,3 +1,4 @@
+set backspace=indent,eol,start
 
 set autoindent
 autocmd FileType * set ts=2 sts=2 sw=2 sta noet
