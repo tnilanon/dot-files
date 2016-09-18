@@ -29,4 +29,7 @@ alias remove-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^
 # Upgrade only Ubuntu security updates
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 
+# This command should add everyone to mldata group
+# echo "yanliu san xinran dehua roseyu zche sungyong guangyu gor wcarvalho" | xargs -n 1 sudo usermod -a -G mldata
+
 
