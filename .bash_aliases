@@ -20,13 +20,20 @@ alias docker-rmi-dangling='docker images --quiet --filter "dangling=true" | xarg
 # alias connect-aludra.usc.edu='ssh nilanon@aludra.usc.edu'
 # alias connect-nunki.usc.edu='ssh nilanon@nunki.usc.edu'
 
-alias connect-beijing.usc.edu='ssh gor@beijing.usc.edu'
-alias connect-lille.usc.edu='ssh gor@lille.usc.edu'
-alias connect-lisbon.usc.edu='ssh gor@lisbon.usc.edu'
-alias connect-melady1.usc.edu='ssh gor@melady1.usc.edu'
-alias connect-melady2.usc.edu='ssh gor@melady2.usc.edu'
-alias connect-newyork.usc.edu='ssh gor@newyork.usc.edu'
-alias connect-melady-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
+# alias connect-beijing.usc.edu='ssh gor@beijing.usc.edu'
+# alias connect-lille.usc.edu='ssh gor@lille.usc.edu'
+# alias connect-lisbon.usc.edu='ssh gor@lisbon.usc.edu'
+# alias connect-melady1.usc.edu='ssh gor@melady1.usc.edu'
+# alias connect-melady2.usc.edu='ssh gor@melady2.usc.edu'
+# alias connect-newyork.usc.edu='ssh gor@newyork.usc.edu'
+# alias connect-melady-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
+
+alias connect-lille='ssh lille'
+alias connect-lisbon='ssh lisbon'
+alias connect-melady1='ssh melady1'
+alias connect-melady2='ssh melady2'
+alias connect-newyork='ssh newyork'
+alias connect-sydney='ssh sydney'
 
 alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
 
