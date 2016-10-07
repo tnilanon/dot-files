@@ -17,8 +17,8 @@ alias docker-rmi-dangling='docker images --quiet --filter "dangling=true" | xarg
 
 # alias connect-login.cs.unc.edu='ssh gor@login.cs.unc.edu'
 
-# alias connect-aludra.usc.edu='ssh nilanon@aludra.usc.edu'
-# alias connect-nunki.usc.edu='ssh nilanon@nunki.usc.edu'
+alias connect-aludra.usc.edu='ssh nilanon@aludra.usc.edu'
+alias connect-nunki.usc.edu='ssh nilanon@nunki.usc.edu'
 
 # alias connect-beijing.usc.edu='ssh gor@beijing.usc.edu'
 # alias connect-lille.usc.edu='ssh gor@lille.usc.edu'
