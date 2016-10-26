@@ -35,6 +35,8 @@ alias connect-melady2='ssh melady2'
 alias connect-newyork='ssh newyork'
 alias connect-sydney='ssh sydney'
 
+alias connect-pdms='ssh pdms'
+
 alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
 
 alias matrix-wall='cat /dev/urandom | hexdump -C | grep "ca fe"'
