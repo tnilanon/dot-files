@@ -8,7 +8,7 @@ alias lh='ll -h'
 alias vi='vim'
 export EDITOR='vi'
 
-alias openssl='/usr/local/Cellar/openssl/1.0.2h/bin/openssl'
-alias c_rehash='/usr/local/Cellar/openssl/1.0.2h/bin/c_rehash'
+alias openssl='/usr/local/Cellar/openssl/*/bin/openssl'
+alias c_rehash='/usr/local/Cellar/openssl/*/bin/c_rehash'
 
 
