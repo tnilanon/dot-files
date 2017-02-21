@@ -35,6 +35,7 @@ alias connect-melady2='ssh melady2'
 alias connect-newyork='ssh newyork'
 alias connect-sydney='ssh sydney'
 alias connect-yahoo='ssh yahoo'
+alias connect-yahoo2='ssh yahoo2'
 
 alias connect-pdms='ssh pdms'
 
