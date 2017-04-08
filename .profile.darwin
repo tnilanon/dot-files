@@ -39,6 +39,12 @@ eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 export PYENV_ROOT="/usr/local/var/pyenv"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# SSH Agent
+ssh-add ~/.ssh/id_ed25519 2>/dev/null
+ssh-add -A ~/.ssh/id_github_rsa 2>/dev/null
+ssh-add ~/.ssh/id_melady_ed25519 2>/dev/null
+ssh-add ~/.ssh/id_rsa 2>/dev/null
+
 # Sublime Text
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
