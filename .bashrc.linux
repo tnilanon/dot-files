@@ -17,7 +17,7 @@ fi
 
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
-	eval `keychain --eval --quiet id_ed25519 id_rsa id_github_rsa`
+	eval `keychain --eval --quiet id_ed25519 id_rsa id_github_rsa id_gitlab_rsa`
 fi
 
 # Reload module 8812au
