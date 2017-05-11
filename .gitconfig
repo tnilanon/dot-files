@@ -14,8 +14,4 @@
 	ll-commit = "!gf() { git ll "$1"^.."$1"; }; gf"
 	diff-commit = "!gf() { git diff "$1"^.."$1"; }; gf"
 	st = status --short --branch
-	update = pull --ff-only --all --prune
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
+	update = pull --ff-only --rebase=preserve --all --prune
