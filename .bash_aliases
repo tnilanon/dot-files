@@ -12,6 +12,8 @@ alias distro='python -c "import platform; print platform.dist()"'
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'
 alias matlab-cli='matlab -nodesktop -nodisplay -nosplash'
 
+alias set-jupyter-notebook-theme='jt --theme monokai --monosize 12 --nbfont opensans --nbfontsize 13 --tcfont robotosans --tcfontsize 14 --dffontsize 10 --outfontsize 11 --cellwidth 88% --nbname'
+
 alias docker-rm-exited='docker ps --quiet --filter "status=exited" | xargs docker rm'
 alias docker-rmi-dangling='docker images --quiet --filter "dangling=true" | xargs docker rmi'
 
