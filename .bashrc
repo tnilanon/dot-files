@@ -43,11 +43,11 @@ function fancy_pwd {
 				if(i == 1 && $1 == "") {
 					print ""
 				}
-				else if(i == 1 || i > NF - 2) {
+				else if(i == 1 || i > NF - 3) {
 					print $i
 				}
 				else {
-					print ".."
+					print "·"
 				}
 			}
 		}
