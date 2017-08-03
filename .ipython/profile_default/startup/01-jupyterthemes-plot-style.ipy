@@ -1,10 +1,18 @@
 import os
 
 if 'DISPLAY' in os.environ:
-	# import jtplot submodule from jupyterthemes
-	from jupyterthemes import jtplot
-	# currently installed theme will be used to
-	# set plot style if no arguments is provided
-	jtplot.style()
+	try:
+		# check whether jupyterthemes was installed
+		__import__('imp').find_module('jupyterthemes')
+
+		# import jtplot submodule from jupyterthemes
+		from jupyterthemes import jtplot
+
+		# currently installed theme will be used to
+		# set plot style if no arguments is provided
+		jtplot.style()
+
+	except ImportError:
+		pass
 
 
