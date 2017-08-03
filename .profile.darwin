@@ -41,7 +41,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # SSH Agent
 ssh-add ~/.ssh/id_ed25519 2>/dev/null
-ssh-add -A ~/.ssh/id_github_rsa 2>/dev/null
+ssh-add -A 2>/dev/null  # ~/.ssh/id_github_rsa
+ssh-add ~/.ssh/id_gitlab_rsa 2>/dev/null
 ssh-add ~/.ssh/id_melady_ed25519 2>/dev/null
 ssh-add ~/.ssh/id_rsa 2>/dev/null
 
