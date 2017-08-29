@@ -59,6 +59,23 @@ function fancy_conda_env {
 	echo "${CONDA_DEFAULT_ENV:+(${CONDA_DEFAULT_ENV}) }"
 }
 
+# http://jakemccrary.com/blog/2015/05/03/put-the-last-commands-run-time-in-your-bash-prompt/  vvv
+
+function timer_start {
+	timer=${timer:-${SECONDS}}
+}
+function timer_stop {
+	timer_show=$((${SECONDS} - ${timer}))
+	if [[ ${timer_show} < 3 ]]; then
+		unset timer_show
+	fi
+	timer_show=${timer_show:+[${timer_show}s] }
+	unset timer
+}
+trap 'timer_start' DEBUG
+
+# http://jakemccrary.com/blog/2015/05/03/put-the-last-commands-run-time-in-your-bash-prompt/  ^^^
+
 # Syntactic sugar for ANSI escape sequences
 txtblk='\[\e[0;30m\]' # Black - Regular
 txtred='\[\e[0;31m\]' # Red
@@ -106,11 +123,11 @@ txtrst='\[\e[0m\]'    # Text Reset
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\h ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\W${txtrst}"
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${bldblu}\V ${txtcyn}\D{%b %d} ${txtwht}\A ${bldgrn}\`fancy_pwd\`${txtrst}"
 #PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
-PROMPT_BEFORE="\`fancy_conda_env\`${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
+PROMPT_BEFORE="${txtblu}\${timer_show}${txtrst}\`fancy_conda_env\`${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
 PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
 
 # Prompt command
-PROMPT_COMMAND='__git_ps1 "${PROMPT_BEFORE}" "${PROMPT_AFTER}"'
+PROMPT_COMMAND='__git_ps1 "${PROMPT_BEFORE}" "${PROMPT_AFTER}"; timer_stop'
 
 # Git prompt features (read ~/.git-prompt.sh for reference)
 export GIT_PS1_SHOWDIRTYSTATE="true"
