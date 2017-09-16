@@ -19,6 +19,7 @@ set pastetoggle=<F2>
 
 syntax on
 colorscheme slate
+set hlsearch
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 "match ExtraWhitespace /\s\+$/
