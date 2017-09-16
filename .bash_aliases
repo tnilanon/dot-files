@@ -41,6 +41,9 @@ alias connect-yahoo2='ssh yahoo2'
 
 alias connect-pdms='ssh pdms'
 
+alias connect-gor-xps-8300='ssh 192.168.24.2'
+alias tunnel-vnc-gor-xps-8300='ssh -L 5901:127.0.0.1:5901 -N -f -l gor 192.168.24.2'
+
 alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
 
 alias matrix-wall='cat /dev/urandom | hexdump -C | grep "ca fe"'
