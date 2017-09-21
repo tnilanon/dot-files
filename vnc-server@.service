@@ -1,0 +1,17 @@
+[Unit]
+Description=Start TightVNC server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=gor
+PAMName=login
+PIDFile=/home/gor/.vnc/%H:%i.pid
+ExecStartPre=-/usr/bin/vncserver -kill :%i &>/dev/null
+ExecStart=/usr/bin/vncserver :%i -geometry 1600x900 -depth 24 -localhost -nolisten tcp
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+
+
