@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # update_dot_files.sh
 
 cd "${HOME}/codes/dot-files"
