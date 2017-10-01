@@ -2,10 +2,12 @@
 
 temp="${HOME}/.bashrc"
 if [[ -f ${temp} && ! -L ${temp} ]]; then
+	echo '>>>'
 	mv -v ${temp} "${HOME}/.bashrc.local"
 fi
 temp="${HOME}/.profile"
 if [[ -f ${temp} && ! -L ${temp} ]]; then
+	echo '>>>'
 	mv -v ${temp} "${HOME}/.profile.local"
 fi
 unset temp
@@ -17,16 +19,20 @@ file_list=$(find ${PWD} -maxdepth 1 -iname ".*" -type f | sort)
 file_list="${file_list} ${PWD}/.config/pip/pip.conf ${PWD}/.ipython/profile_default/startup/01-jupyterthemes-plot-style.ipy ${PWD}/.ssh/config ${PWD}/start_notebook_server.sh ${PWD}/update_dot_files.sh"
 case ${OSTYPE} in
 	linux*)	file_list="${file_list} ${PWD}/ubuntu-upgrade-security-updates.sh" ;;
-	*)			echo 'Skipping ubuntu-upgrade-security-updates.sh as it is specific to Ubuntu' ;;
+	*)			echo 'skipping ubuntu-upgrade-security-updates.sh as it is specific to Ubuntu' ;;
 esac
 
 for file in ${file_list}
 do
-	file_base=${file#${PWD}/}
-	if [[ -L ${HOME}/${file_base} ]]; then
-		echo ${file_base} is already linked
+	rel_file_path=${file#${PWD}/}
+	if [[ -L ${HOME}/${rel_file_path} ]]; then
+		echo "already linked: ${rel_file_path}"
 	else
-		ln -sv ${PWD}/${file_base} ${HOME}/${file_base}
+		home_file_dir=$(dirname ${HOME}/${rel_file_path})
+		if [[ ${home_file_dir} != '.' && ! -e ${home_file_dir} ]]; then
+			mkdir -pv ${home_file_dir}
+		fi
+		ln -sv ${PWD}/${rel_file_path} ${HOME}/${rel_file_path}
 	fi
 done
 
