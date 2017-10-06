@@ -1,5 +1,9 @@
 # .bashrc
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .bashrc'
+fi
+
 # Loads local .bashrc file
 if [[ -f "${HOME}/.bashrc.local" ]]; then
 	. "${HOME}/.bashrc.local"

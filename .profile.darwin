@@ -1,6 +1,10 @@
 # .profile.darwin
 # Platform-specific environment
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .profile.darwin'
+fi
+
 export ARCHFLAGS="-arch x86_64"
 export CPATH="/usr/X11/include"
 #export PATH="/Applications/MATLAB_R2015a.app/bin:/usr/local/bin:/usr/local/sbin:${PATH}:/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin"

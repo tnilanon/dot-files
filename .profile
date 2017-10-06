@@ -1,6 +1,10 @@
 # .profile
 # Load platform-specific environment
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .profile'
+fi
+
 if [[ -f "${HOME}/.profile.local" ]]; then
 	. "${HOME}/.profile.local"
 fi

@@ -1,5 +1,9 @@
 # .bashrc.windows
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .bashrc.windows'
+fi
+
 alias lso='/bin/ls'
 alias ls='lso -aF --color=auto'
 alias ll='ls -l --time-style=long-iso'

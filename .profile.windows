@@ -1,6 +1,10 @@
 # .profile.windows
 # Platform-specific environment
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .profile.windows'
+fi
+
 # Note: ~/.ssh/environment should not be used, as it
 #       already has a different purpose in SSH.
 

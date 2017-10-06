@@ -1,6 +1,10 @@
 # .bash_aliases
 # Created Thu Sep 6, 2012 7:31:20 PM
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .bash_aliases'
+fi
+
 # Notes – Useful command
 # type -a
 # compgen

@@ -1,4 +1,8 @@
 # .profile.linux
 # Platform-specific environment
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .profile.linux'
+fi
+
 

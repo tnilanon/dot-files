@@ -2,6 +2,10 @@
 # Created by Tanachat Nilanon
 # Thu Aug 11, 2011 9:43:52 AM
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .bash_profile'
+fi
+
 # http://superuser.com/questions/789448/choosing-between-bashrc-profile-bash-profile-etc
 #
 # ~/.bash_profile should be super-simple and just load .profile and .bashrc (in that order)

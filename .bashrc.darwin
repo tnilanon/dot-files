@@ -1,5 +1,9 @@
 # .bashrc.darwin
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'sourcing .bashrc.darwin'
+fi
+
 alias lso='/bin/ls'
 alias ls='lso -aFG'
 alias ll='ls -lT'
