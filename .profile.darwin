@@ -12,8 +12,8 @@ export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig:/opt/X11/lib
 
 # Conda
 eval "$(/Users/gor/_conda_/bin/register-python-argcomplete conda)"
-alias conda-source-activate='source /Users/gor/_conda_/bin/activate'
-alias conda-source-deactivate='source /Users/gor/_conda_/bin/deactivate'
+alias conda-activate='source /Users/gor/_conda_/bin/activate'
+alias conda-deactivate='source /Users/gor/_conda_/bin/deactivate'
 
 # Android
 #export ANDROID_HOME="/usr/local/opt/android-sdk"
