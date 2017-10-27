@@ -16,9 +16,9 @@ alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,ima
 if [[ -f /home/gor/_conda_/bin/register-python-argcomplete ]]
 then
 	eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
-	alias conda-activate='source /home/gor/_conda_/bin/activate'
-	alias conda-deactivate='source /home/gor/_conda_/bin/deactivate'
 fi
+alias conda-activate='source /home/gor/_conda_/bin/activate'
+alias conda-deactivate='source /home/gor/_conda_/bin/deactivate'
 
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
