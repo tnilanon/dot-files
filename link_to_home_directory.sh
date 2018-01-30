@@ -2,12 +2,12 @@
 
 temp="${HOME}/.bashrc"
 if [[ -f ${temp} && ! -L ${temp} ]]; then
-	echo '>>>'
+	echo '>>> Preserving existing local file'
 	mv -v ${temp} "${HOME}/.bashrc.local"
 fi
 temp="${HOME}/.profile"
 if [[ -f ${temp} && ! -L ${temp} ]]; then
-	echo '>>>'
+	echo '>>> Preserving existing local file'
 	mv -v ${temp} "${HOME}/.profile.local"
 fi
 unset temp
