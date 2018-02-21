@@ -10,7 +10,7 @@ try:
 
 	# currently installed theme will be used to
 	# set plot style if no arguments is provided
-	jtplot.style()
+	jtplot.style(theme='monokai')
 
 except ImportError:
 	pass
