@@ -43,7 +43,8 @@ alias reload-module-8812au='sudo modprobe -r 8812au; sudo modprobe 8812au'
 alias remove-obsolete-kernel-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l "linux-*" | grep "^rc" | tr -s " " | cut -d " " -f 2)'
 alias remove-all-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s " " | cut -d " " -f 2)'
 
-# Upgrade only Ubuntu security updates
+# Ubuntu security updates
+alias ubuntu-list-security-updates='apt-get -s upgrade | grep "^Inst" | grep -i security | awk -F " " {'"'"'print $2'"'"'}'
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 
 # This command should add everyone to mldata group
