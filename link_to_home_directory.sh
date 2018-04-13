@@ -24,15 +24,21 @@ esac
 
 for file in ${file_list}
 do
-	rel_file_path=${file#${PWD}/}
-	if [[ -L ${HOME}/${rel_file_path} ]]; then
-		echo "already linked: ${rel_file_path}"
+	src_rel_file_path=${file#${PWD}/}
+	tgt_rel_file_path=${src_rel_file_path}
+	case ${OSTYPE} in
+		darwin*) tgt_rel_file_path=${tgt_rel_file_path/#.config\/pip/Library\/Application Support\/pip} ;;
+	esac
+	tgt_file_path=${HOME}/${tgt_rel_file_path}
+	if [[ -L ${tgt_file_path} ]]; then
+		echo "found: ${tgt_file_path}"
 	else
-		home_file_dir=$(dirname ${HOME}/${rel_file_path})
-		if [[ ${home_file_dir} != '.' && ! -e ${home_file_dir} ]]; then
-			mkdir -pv ${home_file_dir}
+		echo "linking new file: ${tgt_file_path}"
+		tgt_file_dir=$(dirname ${tgt_file_path})
+		if [[ ${tgt_file_dir} != '.' && ! -e ${tgt_file_dir} ]]; then
+			mkdir -pv ${tgt_file_dir}
 		fi
-		ln -sv ${PWD}/${rel_file_path} ${HOME}/${rel_file_path}
+		ln -sv ${file} ${tgt_file_path}
 	fi
 done
 
