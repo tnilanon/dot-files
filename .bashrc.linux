@@ -47,7 +47,7 @@ alias remove-all-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | gre
 alias ubuntu-list-security-updates='apt-get -s upgrade | grep "^Inst" | grep -i security | awk -F " " {'"'"'print $2'"'"'}'
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 alias ubuntu-list-kernel-residual-configs='apt list "linux-*" | grep residual-config | cut -d/ -f1 | tr "\n" " "'
-alias ubuntu-list-installed-kernels='apt list "linux-*" | grep "installed"'
+alias ubuntu-list-installed-kernels='apt list "linux-*" | perl -n -e'"'"'/^([^\/]+).*?\[(installed)?,?(automatic)?,?(auto-removable)?\]$/ && printf "%-37s [ %9s , %9s , %14s ]\n", $1, $2, $3, $4'"'"
 alias ubuntu-update-and-upgrade='sudo apt update && sudo apt upgrade'
 
 # This command should add everyone to mldata group
