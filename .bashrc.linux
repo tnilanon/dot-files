@@ -46,6 +46,7 @@ alias remove-all-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | gre
 # Ubuntu security updates
 alias ubuntu-list-security-updates='apt-get -s upgrade | grep "^Inst" | grep -i security | awk -F " " {'"'"'print $2'"'"'}'
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
+alias ubuntu-list-kernel-residual-configs='apt list "linux-*" | grep residual-config | cut -d/ -f1 | tr "\n" " "'
 
 # This command should add everyone to mldata group
 # echo "yanliu san xinran dehua roseyu zche sungyong guangyu gor wcarvalho" | xargs -n 1 sudo usermod -a -G mldata
