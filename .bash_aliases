@@ -10,7 +10,8 @@ fi
 # compgen
 # id
 
-alias distro='python -c "import platform; print platform.dist()"'
+alias distro='if [[ $(type -a python &>/dev/null) ]]; then python -c "import platform; print platform.dist()"; else python3 -c "import platform; print(platform.dist())"; fi'
+# alias distro='python -c "import platform; print platform.dist()"'
 # alias distro='lsb_release -sirc'
 
 alias PythonSimpleHTTPServer='python -m SimpleHTTPServer 8888'
