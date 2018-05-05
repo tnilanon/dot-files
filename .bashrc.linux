@@ -53,6 +53,7 @@ alias ubuntu-list-kernel-residual-configs='apt list "linux-*" | grep residual-co
 alias ubuntu-update-and-upgrade='sudo apt update && sudo apt upgrade'
 
 alias ubuntu-format-auth-log='perl -n -e'"'"'/^([[:alpha:]]{3}[[:blank:]]+\d{1,2}[[:blank:]]+\d{2}:\d{2}:\d{2}) [[:graph:]]+ sudo:[[:blank:]]+([[:graph:]]+) : .*COMMAND=(.*)$/ && printf "%s | %-6.6s | %s\n", $1, $2, $3'"'"
+alias ubuntu-format-last='head -n -2 | tr -s " " | cut -d" " -f 3 | sort -n | uniq -c | sort -bnr'
 
 # This command should add everyone to mldata group
 # echo "yanliu san xinran dehua roseyu zche sungyong guangyu gor wcarvalho" | xargs -n 1 sudo usermod -a -G mldata
