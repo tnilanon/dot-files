@@ -5,6 +5,8 @@ if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
   echo 'sourcing .profile'
 fi
 
+export GPGKEY=6D0CB9DF
+
 if [[ -f "${HOME}/.profile.local" ]]; then
 	. "${HOME}/.profile.local"
 fi
