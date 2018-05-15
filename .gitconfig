@@ -4,7 +4,7 @@
 [user]
 	name = Tanachat Nilanon
 	email = tnilanon@users.noreply.github.com
-	signingkey = 6D0CB9DF
+	signingkey = 1DE788C7A9B3B34E
 [push]
 	default = simple
 [alias]
