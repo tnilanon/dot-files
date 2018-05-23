@@ -1,9 +1,16 @@
 # .bash_aliases
 # Created Thu Sep 6, 2012 7:31:20 PM
 
-if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-  echo 'sourcing .bash_aliases'
+if [ ! -z "${GOR_BASH_ALIASES+x}" ]; then
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bash_aliases multiple times :('
+	fi
+else
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bash_aliases'
+	fi
 fi
+export GOR_BASH_ALIASES='y'
 
 # Notes – Useful command
 # type -a
