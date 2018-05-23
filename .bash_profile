@@ -38,7 +38,7 @@ else
 		. "${HOME}/.bashrc"
 	fi
 
-	export GOR_BASH_PROFILE='y'
+	GOR_BASH_PROFILE='y'
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 		echo 'done sourcing .bash_profile'
 	fi
