@@ -93,7 +93,7 @@ else
 
 	# Fancy pwd for prompt
 	function fancy_pwd {
-		pwd | sed s.${HOME}.~. | awk -F"/" '
+		pwd | sed 's;'${HOME}';~;' | awk -F"/" '
 			BEGIN { ORS = "/" }
 			END {
 				for(i = 1; i <= NF; i++) {
