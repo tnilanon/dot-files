@@ -1,11 +1,23 @@
 # .bashrc
 
-if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-  echo 'sourcing .bashrc'
+#export BASH_SOURCE_DEBUG='y'
+
+if [ ! -z "${GOR_BASHRC+x}" ]; then
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bashrc multiple times :('
+	fi
+else
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bashrc'
+	fi
 fi
+export GOR_BASHRC='y'
 
 # Loads local .bashrc file
 if [[ -f "${HOME}/.bashrc.local" ]]; then
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bashrc.local'
+	fi
 	. "${HOME}/.bashrc.local"
 fi
 
@@ -26,7 +38,7 @@ esac
 
 # This enables forward history search using Ctrl-S
 if [[ $- =~ i ]]; then
-  stty -ixon
+	stty -ixon
 fi
 
 # Syntactic sugar for ANSI escape sequences
@@ -151,6 +163,10 @@ export GIT_PS1_HIDE_IF_PWD_IGNORED="true"
 
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
+fi
+
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+	echo 'done sourcing .bashrc'
 fi
 
 

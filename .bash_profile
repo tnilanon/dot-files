@@ -2,9 +2,18 @@
 # Created by Tanachat Nilanon
 # Thu Aug 11, 2011 9:43:52 AM
 
-if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-  echo 'sourcing .bash_profile'
+#export BASH_SOURCE_DEBUG='y'
+
+if [ ! -z "${GOR_BASH_PROFILE+x}" ]; then
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bash_profile multiple times :('
+	fi
+else
+	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+		echo 'sourcing .bash_profile'
+	fi
 fi
+export GOR_BASH_PROFILE='y'
 
 # http://superuser.com/questions/789448/choosing-between-bashrc-profile-bash-profile-etc
 #
@@ -26,8 +35,13 @@ fi
 
 # Note to self: . is the same as source
 # .bashrc automatically loads the aliases and functions from .bash_aliases
+
 if [[ -f "${HOME}/.bashrc" ]]; then
 	. "${HOME}/.bashrc"
+fi
+
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+	echo 'done sourcing .bash_profile'
 fi
 
 
