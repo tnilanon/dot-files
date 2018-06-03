@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ $(which gpg2 &>/dev/null) ]; then
+	GPG_PROGRAM=$(which gpg2)
+else
+	GPG_PROGRAM=$(which gpg)
+fi
+
+exec ${GPG_PROGRAM} --pinentry-mode loopback ${@}
+
+

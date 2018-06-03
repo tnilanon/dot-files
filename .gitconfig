@@ -5,8 +5,8 @@
 	name = Tanachat Nilanon
 	email = tnilanon@users.noreply.github.com
 	signingkey = 1DE788C7A9B3B34E
-[push]
-	default = simple
+[gpg]
+	program = gpg-pinentry-mode-loopback
 [alias]
 	alias = !git config --list | grep alias | cut -c 7- | sed \"s/^\\([^=]*\\)=/$(tput setaf 3)$(tput bold)\\1 $(tput setaf 1)=$(tput sgr0) /\"
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ; }; gi"
@@ -16,3 +16,9 @@
 	diff-commit = "!gf() { git diff "$1"^.."$1"; }; gf"
 	st = status --short --branch
 	update = pull --ff-only --rebase=preserve --all --prune
+[tag]
+	forcesignannotated = true
+[commit]
+	gpgsign = true
+[push]
+	default = simple
