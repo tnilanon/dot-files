@@ -10,7 +10,7 @@ case ${OSTYPE} in
 	cygwin*)  './copy_to_home_directory.sh' ;;
 	bsd*)     './link_to_home_directory.sh' ;;
 	solaris*) './link_to_home_directory.sh' ;;
-	*)        echo "Can't recognize \${OSTYPE} ${OSTYPE} for .profile" ;;
+	*)        echo "Can't recognize \${OSTYPE} ${OSTYPE} in update_dot_files.sh" ;;
 esac
 
 
