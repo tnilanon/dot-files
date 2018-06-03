@@ -26,6 +26,7 @@ for file in ${file_list}
 do
 	src_rel_file_path=${file#${PWD}/}
 	tgt_rel_file_path=${src_rel_file_path}
+	# redirect pip config path on MacOS
 	case ${OSTYPE} in
 		darwin*) tgt_rel_file_path=${tgt_rel_file_path/#.config\/pip/Library\/Application Support\/pip} ;;
 	esac
