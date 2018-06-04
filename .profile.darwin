@@ -34,6 +34,9 @@ export VXL_SRC="/Library/DRP/vxl/src"
 export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 export HOMEBREW_EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
+# OpenSSL
+export PATH="/usr/local/opt/openssl/bin:${PATH}"
+
 # OS X Airport
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport'
 
