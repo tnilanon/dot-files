@@ -14,7 +14,7 @@ else
 
 	export GPGKEY="1DE788C7A9B3B34E"
 
-	export PATH="~/bin:${PATH}"
+	export PATH="${HOME}/bin:${PATH}"
 
 	if [[ -f "${HOME}/.profile.local" ]]; then
 		if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
