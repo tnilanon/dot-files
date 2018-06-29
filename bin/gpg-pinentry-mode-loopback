@@ -1,11 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ $(which gpg2 &>/dev/null) ]; then
-	GPG_PROGRAM=$(which gpg2)
+if $(command -v gpg2 &>/dev/null) ; then
+	GPG_PROGRAM=$(command -v gpg2)
 else
-	GPG_PROGRAM=$(which gpg)
+	GPG_PROGRAM=$(command -v gpg)
 fi
 
-exec ${GPG_PROGRAM} --pinentry-mode loopback ${@}
+case ${OSTYPE} in
+	linux*) OPTIONS="" ;;
+	*)      OPTIONS="--pinentry-mode loopback" ;;
+esac
+
+exec ${GPG_PROGRAM} ${OPTIONS} ${@}
 
 
