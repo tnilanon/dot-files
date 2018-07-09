@@ -44,6 +44,11 @@ alias remove-obsolete-kernel-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l "l
 alias remove-all-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s " " | cut -d " " -f 2)'
 
 # Ubuntu
+open-default() {
+	xdg-open ${@} &>/dev/null
+}
+export -f open-default
+
 alias ubuntu-list-security-updates='apt-get -s upgrade | grep "^Inst" | grep -i security | awk -F " " {'"'"'print $2'"'"'}'
 alias ubuntu-upgrade-security-updates='~/ubuntu-upgrade-security-updates.sh'
 
