@@ -1,0 +1,132 @@
+#!/bin/bash
+
+convert_days_since_epoch_to_unix_seconds() {
+	echo "@$(( ${1} * 86400 ))"
+}
+format_date() {
+  date --rfc-3339=date --date="${1}" --utc
+}
+format_date_with_days_since_epoch() {
+  format_date "@$(( ${1} * 86400 ))"
+}
+
+length() {
+  length=$(echo "${@}" | wc -c)
+  length=$(( ${length} > 200 ? 200 : ${length} ))
+  length=$(( ${length} - 1 ))
+  echo ${length}
+}
+pad_left() {
+  string="................................................${1}"
+  length=$(length "${string}")
+  echo "${string}" | cut -c$(( ${length} - ${2} + 1 ))-${length}
+}
+pad_right() {
+  string="${1}................................................"
+  echo "${string}" | cut -c1-${2}
+}
+
+if [ "${#}" -eq "0" ]; then
+  echo
+  echo "List of user accounts with password and expiration information"
+  echo $(pad_left "as of $(date --rfc-3339=seconds)" 62)
+  echo "=============================================================="
+  echo
+  echo " Legend: P   =  Password status"
+  echo "           (P) :  usable Password"
+  echo "           (L) :  Locked password"
+  echo "           (NP):  No Password"
+  echo "         M   =  Minimum password age"
+  echo "         W   =  Days of warning before password expiration"
+  echo "         D   =  Automatic disabling of expired password"
+  echo "           (+) :  Password will be disabled some time after its expiration"
+  echo "           (_) :  Password will not be disabled automatically"
+  echo
+  echo "--------|------------------|----|--|----------|-|-----|-|----------|-|----------"
+  echo "Username|      GECOS       |UID |P |LstPwdChng|M| Max |W|Passwd Exp|D| Acct Exp "
+  echo "--------|------------------|----|--|----------|-|-----|-|----------|-|----------"
+fi
+
+sort /etc/passwd | grep ":/home/" | awk -F":" '{ print }' |\
+while read line ; do
+  uid=$(echo -e ${line} | awk -F: '{ print $3 }')
+  if [ "${uid}" -lt "1000" ]; then
+    continue
+  fi
+  username=$(echo -e ${line} | awk -F: '{ print $1 }')
+  gecos=$(echo -e ${line} | awk -F: '{ print $5 }')
+  # fullname=$(echo -e ${gecos} | awk -F, '{ print $1 }')
+
+  if [ "${#}" -eq "1" ] && [ "${1}" = "${username}" ] || [ "${#}" -eq 0 ]; then
+    # read -r lst_pwd_chng min_pwd_age max_pwd_age pwd_wrn_prd pwd_inactv_prd acct_exp \
+    # <<<$(sudo grep "^${username}:" /etc/shadow | awk -F: '{ print $3,$4,$5,$6,$7,$8 }')
+    # pwd_exp=$(format_date_with_days_since_epoch $(( ${lst_pwd_chng} + ${max_pwd_age} )))
+    # lst_pwd_chng=$(format_date_with_days_since_epoch ${lst_pwd_chng})
+    while read line_b ; do
+      case "${line_b}" in
+        "Last password change"*)        lst_pwd_chng="${line_b#*: }" ;;
+        "Password expires"*)            pwd_exp="${line_b#*: }" ;;
+        "Password inactive"*)           pwd_inactv_prd="${line_b#*: }" ;;
+        "Account expires"*)             acct_exp="${line_b#*: }" ;;
+        "Minimum"*"password change"*)   min_pwd_age="${line_b#*: }" ;;
+        "Maximum"*"password change"*)   max_pwd_age="${line_b#*: }" ;;
+        "Number"*"password expires"*)   pwd_wrn_prd="${line_b#*: }" ;;
+      esac
+    done < <(sudo chage -l ${username})
+    lst_pwd_chng=$(format_date "${lst_pwd_chng}")
+		if [ "${pwd_exp}" = "never" ]; then
+			pwd_exp='  NEVER!  '
+		else
+      pwd_exp=$(format_date "${pwd_exp}")
+		fi
+    if [ "${pwd_inactv_prd}" = "never" -o "${pwd_inactv_prd}" = "" ]; then
+      pwd_disabling='_'
+    else
+      pwd_disabling='+'
+    fi
+    if [ "${acct_exp}" = "never" -o "${acct_exp}" = "" ]; then
+      acct_exp='  NEVER!  '
+    else
+      acct_exp=$(format_date "${acct_exp}")
+    fi
+    pwd_status=$(sudo passwd -S ${username} | cut -d' ' -f2)
+
+    if [ "${#}" -eq "1" ]; then
+      echo
+      echo "--- Information for user ${username} ---"
+      echo "GECOS fields: ${gecos}"
+      echo "uid: ${uid}"
+      echo "Password status: ${pwd_status}"
+      echo "Last password change date: ${lst_pwd_chng}"
+      echo "Minimum password age: ${min_pwd_age} days"
+      echo "Maximum password age: ${max_pwd_age} days"
+      echo "Warning period before password expiration: ${pwd_wrn_prd} days"
+      echo "Password expiration date: ${pwd_exp}"
+      if [ "${pwd_inactv_prd}" != "never" -a "${pwd_inactv_prd}" != "" ]; then
+        echo "  Password will be disabled **${pwd_inactv_prd}** days after expiration"
+      fi
+      echo "Account expiration date: ${acct_exp}"
+      printf '%.0s-' $(seq $(( $(length ${username}) + 29 )))
+      echo
+    else
+      username=$(pad_right "${username}" 8)
+      gecos=$(pad_right "${gecos}" 18)
+      uid=$(pad_left "${uid}" 4)
+      pwd_status=$(pad_right "${pwd_status}" 2)
+      lst_pwd_chng=$(pad_right "${lst_pwd_chng}" 10)
+      min_pwd_age=$(pad_left "${min_pwd_age}" 1)
+      max_pwd_age=$(pad_left "${max_pwd_age}" 5)
+      pwd_wrn_prd=$(pad_left "${pwd_wrn_prd}" 1)
+      pwd_exp=$(pad_right "${pwd_exp}" 10)
+      pwd_disabling=$(pad_right "${pwd_disabling}" 1)
+      acct_exp=$(pad_right "${acct_exp}" 10)
+      echo "${username}|${gecos}|${uid}|${pwd_status}|${lst_pwd_chng}|${min_pwd_age}|${max_pwd_age}|${pwd_wrn_prd}|${pwd_exp}|${pwd_disabling}|${acct_exp}"
+    fi
+  fi
+done
+
+if [ "${#}" -eq "0" ]; then
+  echo "--------|------------------|----|--|----------|-|-----|-|----------|-|----------"
+  echo
+fi
+
