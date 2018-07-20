@@ -18,10 +18,6 @@ unset temp
 file_list=$(find ${PWD} -maxdepth 1 -iname ".*" -type f | sort)
 file_list="${file_list} $(find ${PWD}/bin -maxdepth 1 -type f | sort)"
 file_list="${file_list} ${PWD}/.config/pip/pip.conf ${PWD}/.ipython/profile_default/startup/01-jupyterthemes-plot-style.ipy ${PWD}/.ssh/config ${PWD}/start_notebook_server.sh ${PWD}/update_dot_files.sh"
-case ${OSTYPE} in
-	linux*)	file_list="${file_list} ${PWD}/ubuntu-upgrade-security-updates.sh" ;;
-	*)			echo 'skipping ubuntu-upgrade-security-updates.sh as it is specific to Ubuntu' ;;
-esac
 
 for file in ${file_list}
 do
