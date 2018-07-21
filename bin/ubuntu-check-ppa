@@ -5,7 +5,9 @@ for f in /etc/apt/sources.list.d/*.list; do
   grep -Po "(?<=^deb\s).*?(?=#|$)" "$f" | while read -r ENTRY ; do
     echo "ENTRY: $ENTRY"
     HOST=$(cut -d/ -f3 <<< "$ENTRY")
-    if [ "ppa.launchpad.net" = "$HOST" ]; then
+    if [ -z "$HOST" ]; then
+      echo "Skipping local repository"
+    elif [ "ppa.launchpad.net" = "$HOST" ]; then
       USER=$(cut -d/ -f4 <<< "$ENTRY")
       PPA=$(cut -d/ -f5 <<< "$ENTRY")
       echo "PPA: ppa:$USER/$PPA"
@@ -15,7 +17,6 @@ for f in /etc/apt/sources.list.d/*.list; do
       if [ "$packageCount" -eq 0 ] && [ "$1" == "--delete" ]; then
         sudo rm "$f" && echo "$f deleted"
       fi
-      echo
     else
       USER=$(cut -d/ -f3 <<< "$ENTRY")
       PPA=$(cut -d/ -f4 <<< "$ENTRY")
@@ -26,8 +27,8 @@ for f in /etc/apt/sources.list.d/*.list; do
       if [ "$packageCount" -eq 0 ] && [ "$1" == "--delete" ]; then
         sudo rm "$f" && echo "$f deleted"
       fi
-      echo
     fi
+    echo
   done
 done
 
