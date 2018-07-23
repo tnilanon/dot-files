@@ -4,17 +4,18 @@
 for SOURCE_FILE in /etc/apt/sources.list.d/*.list; do
   grep -Po "(?<=^deb\s).*?(?=#|$)" "$SOURCE_FILE" | while read -r ENTRY ; do
     echo "ENTRY: $ENTRY"
-    HOST=$(cut -d/ -f3 <<< "$ENTRY")
+    URL=$(grep -Po "(?:\[.*\] )?(\S*)(?: .*)" <<< "$ENTRY")
+    HOST=$(cut -d/ -f3 <<< "$URL")
     if [ -z "$HOST" ]; then
       echo "Skipping local repository"
     else
       if [ "ppa.launchpad.net" = "$HOST" ]; then
-        USER=$(cut -d/ -f4 <<< "$ENTRY")
-        PPA=$(cut -d/ -f5 <<< "$ENTRY")
+        USER=$(cut -d/ -f4 <<< "$URL")
+        PPA=$(cut -d/ -f5 <<< "$URL")
         echo "TYPE: Launchpad PPA: ppa:$USER/$PPA"
       else
-        USER=$(cut -d/ -f3 <<< "$ENTRY")
-        PPA=$(cut -d/ -f4 <<< "$ENTRY")
+        USER=$(cut -d/ -f3 <<< "$URL")
+        PPA=$(cut -d/ -f4 <<< "$URL")
         echo "TYPE: Repository: $USER/$PPA"
       fi
       echo "SOURCE_FILE: $SOURCE_FILE"
@@ -31,7 +32,7 @@ for SOURCE_FILE in /etc/apt/sources.list.d/*.list; do
         PACKAGE_COUNT='0'
         echo "NO packages installed -- PPA/repository can be safely removed"
       else
-        PACKAGE_COUNT=$(echo "$PACKAGES_FOUND" | wc -l)
+        PACKAGE_COUNT=$(wc -l <<< "$PACKAGES_FOUND")
         echo "$PACKAGE_COUNT package(s) installed"
         echo "$PACKAGES_FOUND"
       fi
