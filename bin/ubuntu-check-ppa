@@ -4,7 +4,7 @@
 for SOURCE_FILE in /etc/apt/sources.list.d/*.list; do
   grep -Po "(?<=^deb\s).*?(?=#|$)" "$SOURCE_FILE" | while read -r ENTRY ; do
     echo "ENTRY: $ENTRY"
-    URL=$(grep -Po "(?:\[.*\] )?(\S*)(?: .*)" <<< "$ENTRY")
+    URL=$(perl -n -e'/^(?:\[.*\] )*(\S*)/ && printf "%s", $1' <<< "$ENTRY")
     HOST=$(cut -d/ -f3 <<< "$URL")
     if [ -z "$HOST" ]; then
       echo "Skipping local repository"
