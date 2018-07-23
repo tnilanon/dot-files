@@ -1,31 +1,42 @@
 #!/usr/bin/env bash
 # From: https://askubuntu.com/questions/674976/check-for-and-remove-unused-ppas
 
-for f in /etc/apt/sources.list.d/*.list; do
-  grep -Po "(?<=^deb\s).*?(?=#|$)" "$f" | while read -r ENTRY ; do
+for SOURCE_FILE in /etc/apt/sources.list.d/*.list; do
+  grep -Po "(?<=^deb\s).*?(?=#|$)" "$SOURCE_FILE" | while read -r ENTRY ; do
     echo "ENTRY: $ENTRY"
     HOST=$(cut -d/ -f3 <<< "$ENTRY")
     if [ -z "$HOST" ]; then
       echo "Skipping local repository"
-    elif [ "ppa.launchpad.net" = "$HOST" ]; then
-      USER=$(cut -d/ -f4 <<< "$ENTRY")
-      PPA=$(cut -d/ -f5 <<< "$ENTRY")
-      echo "PPA: ppa:$USER/$PPA"
-      echo "FILENAME: $f"
-      packageCount=$(awk '$1=="Package:" {if (a[$2]++ == 0) {system("dpkg -l "$2)}}' /var/lib/apt/lists/*"$USER"*"$PPA"*Packages 2>/dev/null | awk '/^ii/' | wc -l)
-      echo "$packageCount package(s) installed"
-      if [ "$packageCount" -eq 0 ] && [ "$1" == "--delete" ]; then
-        sudo rm "$f" && echo "$f deleted"
-      fi
     else
-      USER=$(cut -d/ -f3 <<< "$ENTRY")
-      PPA=$(cut -d/ -f4 <<< "$ENTRY")
-      echo "REPOSITORY: $USER/$PPA"
-      echo "FILENAME: $f"
-      packageCount=$(awk '$1=="Package:" {if (a[$2]++ == 0) {system("dpkg -l "$2)}}' /var/lib/apt/lists/*"$USER"*Packages 2>/dev/null | awk '/^ii/' | wc -l)
-      echo "$packageCount package(s) installed"
-      if [ "$packageCount" -eq 0 ] && [ "$1" == "--delete" ]; then
-        sudo rm "$f" && echo "$f deleted"
+      if [ "ppa.launchpad.net" = "$HOST" ]; then
+        USER=$(cut -d/ -f4 <<< "$ENTRY")
+        PPA=$(cut -d/ -f5 <<< "$ENTRY")
+        echo "TYPE: Launchpad PPA: ppa:$USER/$PPA"
+      else
+        USER=$(cut -d/ -f3 <<< "$ENTRY")
+        PPA=$(cut -d/ -f4 <<< "$ENTRY")
+        echo "TYPE: Repository: $USER/$PPA"
+      fi
+      echo "SOURCE_FILE: $SOURCE_FILE"
+      PACKAGE_LIST_FILE_GLOB="/var/lib/apt/lists/*"$USER"*"$PPA"*Packages"
+      echo "PACKAGE_LIST_FILE_GLOB: $PACKAGE_LIST_FILE_GLOB"
+      # TODO: This script didn't check for package version properly
+      # awk '$1=="Package:" {if (a[$2]++ == 0) {system("echo $2; \
+      #   dpkg -l "$2)}}' $PACKAGE_LIST_FILE_GLOB 2>/dev/null
+      PACKAGES_FOUND=$( \
+        awk '$1=="Package:" {if (a[$2]++ == 0) {system("dpkg -l "$2)}}' \
+        $PACKAGE_LIST_FILE_GLOB 2>/dev/null | awk '/^ii/' | \
+        sed -r 's/^ii\s+(\S+)\s+(\S+).*/    \1    \2/')
+      if [ -z "$PACKAGES_FOUND" ]; then
+        PACKAGE_COUNT='0'
+        echo "NO packages installed -- PPA/repository can be safely removed"
+      else
+        PACKAGE_COUNT=$(echo "$PACKAGES_FOUND" | wc -l)
+        echo "$PACKAGE_COUNT package(s) installed"
+        echo "$PACKAGES_FOUND"
+      fi
+      if [ "$PACKAGE_COUNT" -eq 0 ] && [ "$1" == "--delete" ]; then
+        sudo rm "$SOURCE_FILE" && echo "$SOURCE_FILE deleted"
       fi
     fi
     echo
