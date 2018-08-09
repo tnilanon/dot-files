@@ -1,0 +1,7 @@
+XTerm.*.bellIsUrgent: true
+XTerm.*.faceName: Input Mono Narrow
+XTerm.*.faceSize: 12
+XTerm.*.metaSendsEscape: true
+XTerm.*.saveLines: 4096
+XTerm.*.selectToClipboard: true
+!XTerm.vt100.geometry:
