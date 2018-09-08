@@ -7,7 +7,7 @@ if [[ ${old_crontab} ]]; then
 	old_crontab="${old_crontab}${NEWLINE}"
 fi
 
-new_crontab="""${old_crontab}@reboot	sleep 15s; /home/gor/start_notebook_server.sh"""
+new_crontab="""${old_crontab}@reboot	sleep 15s; /home/gor/bin/start-notebook-server"""
 
 echo "${new_crontab}" | crontab -
 
