@@ -40,6 +40,7 @@ else
 	# alias connect-newyork.usc.edu='ssh gor@newyork.usc.edu'
 	# alias connect-melady-sydney.usc.edu='ssh gor@melady-sydney.usc.edu'
 
+	alias connect-beijing='ssh beijing'
 	alias connect-lille='ssh lille'
 	alias connect-lisbon='ssh lisbon'
 	alias connect-melady1='ssh melady1'
