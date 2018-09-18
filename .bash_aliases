@@ -57,6 +57,8 @@ else
 
 	alias physionet-download='wget -r -np -l 2 -A html,txt,csv.gz -nH --cut-dirs=3 --user=tanachat.nilanon@gmail.com --ask-password'
 
+	alias generate-melady-publications-page='python3 ~/codes/bibtex2html/bibtex2html.py -b ~/Google_Drive/nilanon@usc.edu/USC\ Melady\ Lab/publications/bib-files -f str -m_fmt abbrv -nobr -o'
+
 	alias matrix-wall='cat /dev/urandom | hexdump -C | grep "ca fe"'
 
 	function remove-patient-name-from-directory {
