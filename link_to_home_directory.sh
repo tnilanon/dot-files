@@ -32,11 +32,11 @@ do
 		echo "found: ${tgt_file_path}"
 	else
 		echo "linking new file: ${tgt_file_path}"
-		tgt_file_dir=$(dirname ${tgt_file_path})
-		if [[ ${tgt_file_dir} != '.' && ! -e ${tgt_file_dir} ]]; then
-			mkdir -pv ${tgt_file_dir}
+		tgt_file_dir=$(dirname "${tgt_file_path}")
+		if [[ "${tgt_file_dir}" != '.' && ! -e "${tgt_file_dir}" ]]; then
+			mkdir -pv "${tgt_file_dir}"
 		fi
-		ln -sv ${file} ${tgt_file_path}
+		ln -sv "${file}" "${tgt_file_path}"
 	fi
 done
 
