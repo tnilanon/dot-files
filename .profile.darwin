@@ -41,7 +41,7 @@ export PATH="/usr/local/opt/openssl/bin:${PATH}"
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport'
 
 # Perl
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # Pyenv
 export PYENV_ROOT="/usr/local/var/pyenv"
