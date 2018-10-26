@@ -45,6 +45,7 @@ else
 	alias connect-lisbon='ssh lisbon'
 	alias connect-melady1='ssh melady1'
 	alias connect-melady2='ssh melady2'
+	alias connect-melady3='ssh melady3'
 	alias connect-newyork='ssh newyork'
 	alias connect-sydney='ssh sydney'
 	alias connect-yahoo='ssh yahoo'
