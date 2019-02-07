@@ -34,6 +34,25 @@ export VXL_SRC="/Library/DRP/vxl/src"
 export PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 export HOMEBREW_EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
+# Keychain
+if command -v keychain >/dev/null 2>&1; then
+  if [[ -f /Users/gor/.ssh/id_ed25519 ]]; then
+    eval `keychain --eval --quiet id_ed25519`
+  fi
+  if [[ -f /Users/gor/.ssh/id_repo_ed25519 ]]; then
+    eval `keychain --eval --quiet id_repo_ed25519`
+  fi
+  if [[ -f /Users/gor/.ssh/id_rsa ]]; then
+    eval `keychain --eval --quiet id_rsa`
+  fi
+  if [[ -f /Users/gor/.ssh/id_github_rsa ]]; then
+    eval `keychain --eval --quiet id_github_rsa`
+  fi
+  if [[ -f /Users/gor/.ssh/id_gitlab_rsa ]]; then
+    eval `keychain --eval --quiet id_gitlab_rsa`
+  fi
+fi
+
 # OpenSSL
 export PATH="/usr/local/opt/openssl/bin:${PATH}"
 
