@@ -53,6 +53,12 @@ else
 
 	alias connect-pdms='ssh pdms'
 
+	alias connect-gor-home='ssh gor-home.duckdns.org'
+	alias connect-gor-mbp='ssh gor-mbp.duckdns.org'
+	alias connect-gor-lab='ssh gor-lab.duckdns.org'
+	alias connect-gor-lab-mbp='ssh gor-lab-mbp.duck.dns.org'
+	alias connect-gor-infolab='ssh gor-infolab.duckdns.org'
+
 	alias connect-gor-xps-8300='ssh 192.168.24.2'
 	alias tunnel-vnc-gor-xps-8300='ssh -L 5917:127.0.0.1:5917 -N -f -l gor 192.168.24.2'
 
