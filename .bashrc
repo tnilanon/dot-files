@@ -159,6 +159,8 @@ else
 	#export PS1="\[\e[1;32m\]\\u \[\e[0;35m\]\\h \[\e[1;34m\]\\V \[\e[0;36m\]\\D{%a %d} \[\e[0;37m\]\\A \[\e[1;31m\]\\W \[\e[0;93m\]\\$ \[\e[m\]"
 	#export PS1="\[\e[1;31m\]\\u \[\e[0;35m\]\\h \[\e[1;34m\]\\V \[\e[0;36m\]\\D{%a %d} \[\e[0;37m\]\\A \[\e[1;32m\]\\W \[\e[0;93m\]\\$ \[\e[m\]"
 
+	export GPG_TTY=$(tty)
+
 	if [[ -f ~/.bash_aliases ]]; then
 		. ~/.bash_aliases
 	fi
