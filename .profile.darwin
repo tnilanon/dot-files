@@ -11,7 +11,9 @@ export CPATH="/usr/X11/include"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig"
 
 # Conda
-eval "$(/Users/gor/_conda_/bin/register-python-argcomplete conda)"
+if [[ -f /Users/gor/_conda_/bin/register-python-argcomplete ]]; then
+  eval "$(/Users/gor/_conda_/bin/register-python-argcomplete conda)"
+fi
 alias conda-activate='source /Users/gor/_conda_/bin/activate'
 alias conda-deactivate='source /Users/gor/_conda_/bin/deactivate'
 
