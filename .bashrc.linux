@@ -13,12 +13,31 @@ alias lh='ll -h'
 alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra,tools}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')" | tr -s " " | cut -d " " -f 2)'
 
 # Conda
-if [[ -f /home/gor/_conda_/bin/register-python-argcomplete ]]
-then
-	eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
+
+# https://github.com/conda/conda-docs/issues/415
+# After a lot of internal discussion, we've deprecated tab completion starting in conda 4.4. I guess argcomplete also isn't built for python 3.6. At some point in the future if we switch our python argparse for a better library, we can consider bringing back tab completion.
+# if [[ -f /home/gor/_conda_/bin/register-python-argcomplete ]]
+# then
+# 	eval "$(/home/gor/_conda_/bin/register-python-argcomplete conda)"
+# fi
+
+#alias conda-activate='source /home/gor/_conda_/bin/activate'
+#alias conda-deactivate='source /home/gor/_conda_/bin/deactivate'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/gor/__conda__/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/gor/__conda__/etc/profile.d/conda.sh" ]; then
+        . "/home/gor/__conda__/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/gor/__conda__/bin:$PATH"
+    fi
 fi
-alias conda-activate='source /home/gor/_conda_/bin/activate'
-alias conda-deactivate='source /home/gor/_conda_/bin/deactivate'
+unset __conda_setup
+# <<< conda initialize <<<
 
 # Keychain
 if command -v keychain >/dev/null 2>&1; then
