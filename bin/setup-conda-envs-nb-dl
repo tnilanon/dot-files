@@ -1,0 +1,15 @@
+#!/bin/bash
+
+conda create -n nb python=3.6 jupyter nb_conda
+conda activate nb
+conda install numpy matplotlib cycler kiwisolver ply pyparsing
+conda install -c conda-forge jupyterthemes
+set-jupyter-notebook-theme
+conda deactivate
+
+conda create -n dl python=3 numpy scipy scikit-learn pandas matplotlib seaborn nb_conda
+conda activate dl
+conda install ply
+conda install -c conda-forge jupyterthemes
+conda deactivate
+
