@@ -84,8 +84,8 @@ else
 
 	# Fancy hostname for prompt
 	function fancy_hostname {
-		if [[ -z ${SSH_CONNECTION+x} ]]; then
-			echo local
+		if [[ -z "${SSH_CONNECTION+x}" ]]; then
+			echo ${MSYSTEM+${MSYSTEM}@}local
 		else
 			echo -e ${bakpur:2:-2}${bldwht:2:-2}${HOSTNAME}${txtrst:2:-2}
 		fi
@@ -139,6 +139,10 @@ else
 	#PROMPT_BEFORE="${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
 	PROMPT_BEFORE="${txtblu}\${timer_show}${txtrst}\`fancy_conda_env\`${bldred}\u ${txtpur}\`fancy_hostname\` ${txtcyn}\D{%F %R} ${bldgrn}\`fancy_pwd\`${txtrst}"
 	PROMPT_AFTER="\n${hiylw}\\$ ${txtrst}"
+
+	if [[ ! -z "${MSYSTEM+x}" ]]; then
+		PROMPT_BEFORE="\[\033]0;${TITLEPREFIX}:\`fancy_pwd\`\007\]${PROMPT_BEFORE}"
+	fi
 
 	# Prompt command
 	PROMPT_COMMAND='__git_ps1 "${PROMPT_BEFORE}" "${PROMPT_AFTER}"; timer_stop'
