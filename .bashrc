@@ -87,7 +87,7 @@ else
 		if [[ -z ${SSH_CONNECTION+x} ]]; then
 			echo local
 		else
-			echo -e ${bakpur:2:6}${bldwht:2:8}${HOSTNAME}${txtrst:2:5}
+			echo -e ${bakpur:2:-2}${bldwht:2:-2}${HOSTNAME}${txtrst:2:-2}
 		fi
 	}
 
