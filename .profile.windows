@@ -48,12 +48,12 @@ fi
 if ! agent_is_running; then
     agent_start
     ssh-add ~/.ssh/id_ed25519
-    ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/id_github_desktop_rsa
+    # ssh-add ~/.ssh/id_rsa
+    # ssh-add ~/.ssh/id_github_desktop_rsa
 elif ! agent_has_keys; then
     ssh-add ~/.ssh/id_ed25519
-    ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/id_github_desktop_rsa
+    # ssh-add ~/.ssh/id_rsa
+    # ssh-add ~/.ssh/id_github_desktop_rsa
 fi
 
 unset env

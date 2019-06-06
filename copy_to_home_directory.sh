@@ -2,11 +2,9 @@
 
 case ${OSTYPE} in
 	msys*|cygwin*)
-		find ${PWD} -maxdepth 1 -iname ".*" -type f | xargs -I % cp -v % ${HOME}
-		cp -v ${PWD}/.config/pip/pip.conf ${HOME}/.config/pip/pip.conf
-		cp -v ${PWD}/.ipython/profile_default/startup/01-jupyterthemes-plot-style.ipy ${HOME}/.ipython/profile_default/startup/01-jupyterthemes-plot-style.ipy
-		cp -v ${PWD}/.ssh/config ${HOME}/.ssh/config
-		cp -v ${PWD}/update_dot_files.sh ${HOME}/update_dot_files.sh
+		for file in .bash_aliases .bash_profile .bashrc .bashrc.windows .profile .profile.windows .vimrc .ssh/config .gitconfig bin/gpg-pinentry-mode-loopback copy_to_home_directory.sh update_dot_files.sh; do
+			cp -v ${PWD}/${file} ${HOME}/${file};
+		done
 		;;
 	*)
 		echo "This script should only be run on Windows"
