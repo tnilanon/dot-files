@@ -15,7 +15,7 @@
 	ll-commit = "!gf() { git ll "$1"^.."$1"; }; gf"
 	diff-commit = "!gf() { git diff "$1"^.."$1"; }; gf"
 	st = status --short --branch
-	update = pull --ff-only --rebase=preserve --all --prune
+	up = pull --ff-only --rebase=preserve --all --prune
 [tag]
 	forcesignannotated = true
 [commit]
