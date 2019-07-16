@@ -2,7 +2,7 @@
 # update_dot_files.sh
 
 cd "${HOME}/codes/dot-files"
-git update
+git up
 case ${OSTYPE} in
 	darwin*)  './link_to_home_directory.sh' ;;
 	linux*)   './link_to_home_directory.sh' ;;
