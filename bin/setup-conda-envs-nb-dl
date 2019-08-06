@@ -1,15 +1,25 @@
 #!/bin/bash
 
-conda create -n nb python=3.6 jupyter nb_conda
-conda activate nb
-conda install numpy matplotlib cycler kiwisolver ply pyparsing
-conda install -c conda-forge jupyterthemes
-set-jupyter-notebook-theme
+eval "$(conda shell.bash hook)"
+
+if [[ -z "$(conda env list | grep ^nb)" ]]; then
+	conda create -y -n nb python=3.6 jupyter nb_conda numpy matplotlib cycler kiwisolver ply pyparsing
+	conda activate nb
+else
+	conda activate nb
+	conda install -y python=3.6 jupyter nb_conda numpy matplotlib cycler kiwisolver ply pyparsing
+fi
+conda install -y -c conda-forge jupyterthemes
+jt --theme monokai --monosize 12 --nbfont opensans --nbfontsize 13 --tcfont robotosans --tcfontsize 14 --dffontsize 10 --outfontsize 11 --cellwidth 88% --nbname
 conda deactivate
 
-conda create -n dl python=3 numpy scipy scikit-learn pandas matplotlib seaborn nb_conda
-conda activate dl
-conda install ply
-conda install -c conda-forge jupyterthemes
+if [[ -z "$(conda env list | grep ^dl)" ]]; then
+	conda create -y -n dl python=3 numpy scipy scikit-learn pandas matplotlib seaborn nb_conda ply
+	conda activate dl
+else
+	conda activate dl
+	conda install -y python=3 numpy scipy scikit-learn pandas matplotlib seaborn nb_conda ply
+fi
+conda install -y -c conda-forge jupyterthemes
 conda deactivate
 
