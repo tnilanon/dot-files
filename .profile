@@ -33,7 +33,7 @@ else
 		*)				echo "Can't recognize \${OSTYPE} ${OSTYPE} for .profile" ;;
 	esac
 
-	GOR_PROFILE='y'
+	export GOR_PROFILE='y'
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 		echo 'done sourcing .profile'
 	fi
