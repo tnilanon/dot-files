@@ -9,4 +9,7 @@ alias ls='lso -aF --color=auto'
 alias ll='ls -l --time-style=long-iso'
 alias lh='ll -h'
 
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
