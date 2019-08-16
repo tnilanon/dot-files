@@ -5,9 +5,10 @@ if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 fi
 
 alias lso='/bin/ls'
-alias ls='lso -aF --color=auto'
+alias ls='lso -F --color=auto'
+alias ls.='ls -A'
 alias ll='ls -l --time-style=long-iso'
-alias lh='ll -h'
+alias ll.='ll -a'
 
 # apt-get purge old kernels
 alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra,tools}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')" | tr -s " " | cut -d " " -f 2)'

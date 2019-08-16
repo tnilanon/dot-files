@@ -5,9 +5,10 @@ if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 fi
 
 alias lso='/bin/ls'
-alias ls='lso -aF --color=auto'
+alias ls='lso -F --color=auto'
+alias ls.='ls -A'
 alias ll='ls -l --time-style=long-iso'
-alias lh='ll -h'
+alias ll.='ll -a'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

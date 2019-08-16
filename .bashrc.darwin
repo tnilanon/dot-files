@@ -5,9 +5,10 @@ if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 fi
 
 alias lso='/bin/ls'
-alias ls='lso -aFG'
+alias ls='lso -FG'
+alias ls.='ls -A'
 alias ll='ls -lT'
-alias lh='ll -h'
+alias ll.='ll -a'
 
 alias vi='vim'
 export EDITOR='vi'
