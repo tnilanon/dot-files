@@ -13,7 +13,8 @@
 	ls = log --decorate --graph --oneline
 	ll = log --decorate --graph --numstat --pretty=tformat:"%C(yellow)%h\\ %C(red)%G?\\ %C(green)%cd\\ %Creset%s\\ %C(blue)[%cn]%C(red)%d" --date=short
 	ll-commit = "!gf() { git ll "$1"^.."$1"; }; gf"
-	diff-commit = "!gf() { git diff "$1"^.."$1"; }; gf"
+	df = diff --word-diff
+	df-commit = "!gf() { git df "$1"^.."$1"; }; gf"
 	st = status --short --branch
 	up = pull --ff-only --rebase=preserve --all --prune
 [tag]
