@@ -16,7 +16,7 @@
 	df = diff --word-diff
 	df-commit = "!gf() { git df "$1"^.."$1"; }; gf"
 	st = status --short --branch
-	up = pull --ff-only --rebase=preserve --all --prune
+	up = pull --ff-only --rebase=merges --all --prune
 [tag]
 	forcesignannotated = true
 [commit]
