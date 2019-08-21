@@ -96,7 +96,7 @@ alias start-vnc-server='sudo systemctl start vnc-server@17.service'
 if [[ -f /proc/version && $(</proc/version) == *Microsoft@Microsoft* ]]; then
 	# Set correct umask
 	# Microsoft/BashOnWindows#352
-	if [[ "$(umask)" == '000' ]]; then
+	if [[ "$(umask)" == *000 ]]; then
 		umask 022
 	fi
 
