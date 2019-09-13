@@ -169,7 +169,7 @@ else
 		. ~/.bash_aliases
 	fi
 
-	export GOR_BASHRC='y'
+	GOR_BASHRC='y'
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 		echo 'done sourcing .bashrc'
 	fi
