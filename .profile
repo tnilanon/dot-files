@@ -5,7 +5,7 @@
 
 if [ ! -z "${GOR_PROFILE+x}" ]; then
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-		echo 'sourcing .profile multiple times :( skipping'
+		echo 'skipping .profile; not good to source it multiple times :('
 	fi
 else
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
@@ -21,6 +21,9 @@ else
 			echo 'sourcing .profile.local'
 		fi
 		. "${HOME}/.profile.local"
+		if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+			echo 'done sourcing .profile.local'
+		fi
 	fi
 
 	case ${OSTYPE} in

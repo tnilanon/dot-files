@@ -3,7 +3,7 @@
 
 if [ ! -z "${GOR_BASH_ALIASES+x}" ]; then
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-		echo 'sourcing .bash_aliases multiple times :( skipping'
+		echo 'skipping .bash_aliases; not good to source it multiple times :('
 	fi
 else
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then

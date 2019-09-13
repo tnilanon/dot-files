@@ -4,7 +4,7 @@
 
 if [ ! -z "${GOR_BASHRC+x}" ]; then
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
-		echo 'sourcing .bashrc multiple times :( skipping'
+		echo 'skipping .bashrc; not good to source it multiple times :('
 	fi
 else
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
@@ -17,6 +17,9 @@ else
 			echo 'sourcing .bashrc.local'
 		fi
 		. "${HOME}/.bashrc.local"
+		if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+			echo 'done sourcing .bashrc.local'
+		fi
 	fi
 
 	case ${OSTYPE} in
