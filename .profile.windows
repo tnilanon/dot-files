@@ -58,4 +58,8 @@ fi
 
 unset env
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'done sourcing .profile.windows'
+fi
+
 

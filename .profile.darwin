@@ -78,4 +78,8 @@ ssh-add ~/.ssh/id_rsa 2>/dev/null
 # Sublime Text
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'done sourcing .profile.darwin'
+fi
+
 

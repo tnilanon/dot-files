@@ -14,3 +14,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'done sourcing .bashrc.windows'
+fi
+
+

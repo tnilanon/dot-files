@@ -16,4 +16,8 @@ export EDITOR='vi'
 # alias openssl='/usr/local/Cellar/openssl/*/bin/openssl'
 # alias c_rehash='/usr/local/Cellar/openssl/*/bin/c_rehash'
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'done sourcing .bashrc.darwin'
+fi
+
 

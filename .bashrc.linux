@@ -110,3 +110,8 @@ if [[ -f /proc/version && $(</proc/version) == *Microsoft@Microsoft* ]]; then
 	cd ~
 fi
 
+if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
+  echo 'done sourcing .bashrc.linux'
+fi
+
+
