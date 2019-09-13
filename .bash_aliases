@@ -80,7 +80,7 @@ else
 		fi
 	}
 
-	export GOR_BASH_ALIASES='y'
+	GOR_BASH_ALIASES='y'
 	if [ ! -z "${BASH_SOURCE_DEBUG+x}" ]; then
 		echo 'done sourcing .bash_aliases'
 	fi
