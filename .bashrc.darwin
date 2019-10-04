@@ -7,8 +7,10 @@ fi
 alias lso='/bin/ls'
 alias ls='lso -FG'
 alias ls.='ls -A'
+alias lsd='lso -Gd */'
 alias ll='ls -lT'
 alias ll.='ll -a'
+alias lld='lso -GlTd */'
 
 alias vi='vim'
 export EDITOR='vi'

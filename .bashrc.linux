@@ -7,8 +7,10 @@ fi
 alias lso='/bin/ls'
 alias ls='lso -F --color=auto'
 alias ls.='ls -A'
+alias lsd='lso --color=auto -d */'
 alias ll='ls -l --time-style=long-iso'
 alias ll.='ll -a'
+alias lld='lso --color=auto -l --time-style=long-iso -d */'
 
 # apt-get purge old kernels
 alias apt-get-purge-old-kernels='sudo apt-get purge $(dpkg -l linux-{headers,image,image-extra,tools}-"[0-9]*" | awk "/ii/{print $2}" | grep -ve "$(uname -r | sed -r 's/-[a-z]+//')" | tr -s " " | cut -d " " -f 2)'
