@@ -68,6 +68,10 @@ alias reload-module-8812au='sudo modprobe -r 8812au; sudo modprobe 8812au'
 alias remove-obsolete-kernel-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l "linux-*" | grep "^rc" | tr -s " " | cut -d " " -f 2)'
 alias remove-all-obsolete-configs='sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s " " | cut -d " " -f 2)'
 
+# Benchmark for graphics-drivers PPA
+# https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+index
+alias graphics-drivers-benchmark='phoronix-test-suite default-benchmark openarena xonotic tesseract gputest unigine-valley'
+
 # Ubuntu
 open-default() {
 	xdg-open ${@} &>/dev/null
